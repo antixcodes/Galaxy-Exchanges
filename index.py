@@ -1,3 +1,4 @@
+from keep_alive import keep_alive
 import nextcord, requests, time#, chat-exporter#, jishaku
 from nextcord.ext import commands
 from nextcord import Interaction, ui
@@ -601,6 +602,7 @@ async def help(ctx, helpcategory="none"):
     await ctx.send(embed=embed)
 
 async def main():
+  keep_alive()
   await bot.start(tkn)
 
 asyncio.run(main())

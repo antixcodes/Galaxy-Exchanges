@@ -1,0 +1,8 @@
+nextcord
+requests
+aiohttp
+googletrans==4.0.0-rc1
+dhooks
+chat-exporter
+qrcode
+aiofiles

@@ -1,0 +1,39 @@
+{
+    "category_mapping": {
+        "crypto_to_inr": 1315684536390254722,
+        "inr_to_crypto": 1315684490324086845,
+        "crypto_to_crypto": 1315983266414723124,
+        "paypal_to_crypto": 1315386658610483261,
+        "crypto_to_paypal": 1315684116175261756,
+        "pkr_to_crypto": 1315684198891126866,
+        "crypto_to_pkr": 1315684284870430803,
+        "crypto_to_idr": 1315685831607844965,
+        "idr_to_crypto": 1315685749185843243,
+        "crypto_to_bdt": 1315685288055668797,
+        "bdt_to_crypto": 1315685419488251944
+    },
+    "allowed_receiving_options": {
+        "crypto": [
+            "pkr",
+            "paypal",
+            "idr",
+            "inr",
+            "bdt"
+        ],
+        "inr": [
+            "crypto"
+        ],
+        "paypal": [
+            "crypto"
+        ],
+        "pkr": [
+            "crypto"
+        ],
+        "idr": [
+            "crypto"
+        ],
+        "bdt": [
+            "crypto"
+        ]
+    }
+}

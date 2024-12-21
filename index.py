@@ -44,16 +44,16 @@ tick="<:GreenCheck:1317254690676936816>"
 
 def load_walletdb():
     try:
-        with open('database\wallet.json', 'r') as file:
+        with open('database/wallet.json', 'r') as file:
             return json.load(file)
     except FileNotFoundError:
         return {}  
     
 def save_walletdb(data):
-    with open('database\wallet.json', 'w') as file:
+    with open('database/wallet.json', 'w') as file:
         json.dump(data, file, indent=4)
 
-VOUCHES_FILE = "database\vouches.json"
+VOUCHES_FILE = "database/vouches.json"
 
 if not os.path.exists(VOUCHES_FILE):
     with open(VOUCHES_FILE, 'w') as f:
@@ -61,26 +61,26 @@ if not os.path.exists(VOUCHES_FILE):
 
 def load_walletdb():
     try:
-        with open('database\wallet.json', 'r') as file:
+        with open('database/wallet.json', 'r') as file:
             return json.load(file)
     except FileNotFoundError:
         return {}  
     
 def save_walletdb(data):
-    with open('database\wallet.json', 'w') as file:
+    with open('database/wallet.json', 'w') as file:
         json.dump(data, file, indent=4)
 
 def load_state():
-    if os.path.exists('database\state.json'):
-        with open('database\state.json', 'r') as file:
+    if os.path.exists('database/state.json'):
+        with open('database/state.json', 'r') as file:
             return json.load(file)
     return {}
 
 def save_state(state):
-    with open('database\state.json', 'w') as file:
+    with open('database/state.json', 'w') as file:
         json.dump(state, file)
 
-def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, file_name="database\exchangedeals.json"):
+def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, file_name="database/exchangedeals.json"):
     new_data = {
         ticket_channel_id: [
             {   "name": nom,
@@ -103,7 +103,7 @@ def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, fil
         json.dump(data, file, indent=4)
     print(f"Data saved to {file_name}")
 
-CONFIG_FILE_PATH = "database\categorydb.json"
+CONFIG_FILE_PATH = "database/categorydb.json"
 def load_config():
     if os.path.exists(CONFIG_FILE_PATH):
         with open(CONFIG_FILE_PATH, "r") as file:
@@ -133,7 +133,7 @@ def load_config():
             }
         }
 
-role_map_file = "database\rolemap.json"
+role_map_file = "database/rolemap.json"
 def rolemap():
     if os.path.exists(role_map_file):
         try:
@@ -166,7 +166,7 @@ def rolemapsave(config):
         json.dump(config, file, indent=4)
 
 exchconfig = rolemap()  
-def fukc(file_name="database\exchangedeals.json"):
+def fukc(file_name="database/exchangedeals.json"):
     try:
         with open(file_name, "r") as file:
             data = json.load(file)
@@ -183,29 +183,29 @@ if not os.path.exists('tickets'):
     os.makedirs('tickets')
 
 def load_state():
-    if os.path.exists('database\state.json'):
-        with open('database\state.json', 'r') as file:
+    if os.path.exists('database/state.json'):
+        with open('database/state.json', 'r') as file:
             return json.load(file)
     return {}
 
 def save_state(state):
-    with open('database\state.json', 'w') as file:
+    with open('database/state.json', 'w') as file:
         json.dump(state, file)
 
 state = load_state()
 
 def load_staff_data():
     try:
-        with open("database\staff.json", "r") as file:
+        with open("database/staff.json", "r") as file:
             return json.load(file)
     except FileNotFoundError:
         return {}
 
 def save_staff_data(data):
-    with open("database\staff.json", "w") as file:
+    with open("database/staff.json", "w") as file:
         json.dump(data, file, indent=4)
 
-def fukc(file_name="database\exchangedeals.json"):
+def fukc(file_name="database/exchangedeals.json"):
     try:
         with open(file_name, "r") as file:
             data = json.load(file)
@@ -406,8 +406,8 @@ async def setup(interaction: nextcord.Interaction, channel: nextcord.TextChannel
 @bot.slash_command(description="unsetups exchange panel")
 async def unsetup(interaction: nextcord.Interaction):
     if any(role.id == admin for role in interaction.user.roles):
-        if os.path.exists('database\state.json'):
-            with open('database\state.json', 'r') as file:
+        if os.path.exists('database/state.json'):
+            with open('database/state.json', 'r') as file:
                 state = json.load(file)
             state.pop('setup_channel_id', None)
             state.pop('setup_message_id', None)

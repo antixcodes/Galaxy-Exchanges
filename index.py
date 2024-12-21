@@ -516,7 +516,7 @@ async def rsetup(
         role_key = randmap[role]
         exchconfig["role_map"][role_key] = role_id
         rolemapsave(exchconfig)
-        await interaction.response.send_message(embed=nextcord.Embed(description=f"{tick} | Successfully stored role id of {role} in DB.", ephemeral=True))
+        await interaction.response.send_message(embed=nextcord.Embed(description=f"{tick} | Successfully stored role id of {role} in DB."), ephemeral=True))
     else:
         await interaction.response.send_message("You Can't Use this Slash Cmd.", ephemeral=True) 
 

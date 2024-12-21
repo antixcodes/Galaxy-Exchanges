@@ -1,3 +1,4 @@
+from keep_alive import keep_alive
 import nextcord, requests, time#, chat-exporter#, jishaku
 from nextcord.ext import commands
 from nextcord import Interaction, ui
@@ -600,6 +601,7 @@ async def help(ctx, helpcategory="none"):
     elif "exchangers" in helpcategory:   '''                     
     await ctx.send(embed=embed)
 
+keep_alive()
 async def main():
   #await load()
   await bot.start(tkn)

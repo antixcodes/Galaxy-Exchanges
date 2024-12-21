@@ -248,7 +248,6 @@ role_mapping = exchconfig.get("role_map", {})
 admin = role_mapping.get("admin_id")
 mmrole = role_mapping.get("mm_id")
 majdur = role_mapping.get("staff")
-exchrole = 1315652262210830420
 
 class staff(commands.Cog):
     def __init__(self, bot):
@@ -256,7 +255,7 @@ class staff(commands.Cog):
 
     @commands.command()
     async def reclaim(self, ctx):
-        if any(role.id == exchrole for role in ctx.author.roles):
+        if any(role.id == exchangers_role_id for role in ctx.author.roles):
             channel_id = str(ctx.channel.id)
             channel = ctx.guild.get_channel(int(channel_id))
             data = fukc()
@@ -285,7 +284,7 @@ class staff(commands.Cog):
 
     @commands.command()
     async def transcript(self, ctx: commands.Context, limit: Optional[int] = None, tz_info="UTC", military_time=True, fancy_times=True):
-        if any(role.id == exchrole for role in ctx.author.roles):
+        if any(role.id == exchangers_role_id for role in ctx.author.roles):
             channel = ctx.channel
             channel_id = str(ctx.channel.id)
             edit = await ctx.send("Generating Transcript <a:load:1305941958967169054>")
@@ -352,7 +351,7 @@ class staff(commands.Cog):
 
     @commands.command()
     async def close(self, ctx):
-        if any(role.id == exchrole for role in ctx.author.roles):
+        if any(role.id == exchangers_role_id for role in ctx.author.roles):
             channel_id = str(ctx.channel.id)
             data = fukc()
             if channel_id in data:
@@ -384,7 +383,7 @@ class staff(commands.Cog):
         
     @commands.command()
     async def unclaim(self, ctx):
-        if any(role.id == exchrole for role in ctx.author.roles):
+        if any(role.id == exchangers_role_id for role in ctx.author.roles):
             channel_id = str(ctx.channel.id)
             data = fukc()
             if channel_id in data:
@@ -416,7 +415,7 @@ class staff(commands.Cog):
         
     @commands.command()
     async def remind(self, ctx, user: nextcord.User, time: str, *, note="None"):
-        if any(role.id == exchrole for role in ctx.author.roles):
+        if any(role.id == exchangers_role_id for role in ctx.author.roles):
             time_multipliers = {"s": 1, "m": 60, "h": 3600}
             unit = time[-1]
             if unit not in time_multipliers:
@@ -468,7 +467,7 @@ class staff(commands.Cog):
         
     @commands.command(aliases=["ts"])
     async def translate(self, ctx):
-        if any(role.id == majdur or exchrole for role in ctx.author.roles):
+        if any(role.id == majdur or exchangers_role_id for role in ctx.author.roles):
             try:
                 if ctx.message.reference:
                     referenced_message = await ctx.channel.fetch_message(ctx.message.reference.message_id)
@@ -716,7 +715,7 @@ class staff(commands.Cog):
 
     @commands.command()
     async def done(self, ctx: commands.Context, limit: Optional[int] = None, tz_info="UTC", military_time=True, fancy_times=True):
-        if any(role.id == exchrole for role in ctx.author.roles):
+        if any(role.id == exchangers_role_id for role in ctx.author.roles):
             channel = ctx.channel
             await ctx.message.delete()
             channel_id = str(ctx.channel.id)

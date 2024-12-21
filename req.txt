@@ -6,3 +6,4 @@ dhooks
 chat-exporter
 qrcode
 aiofiles
+flask

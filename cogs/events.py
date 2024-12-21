@@ -5,7 +5,7 @@ with open('config.json', 'r') as f:
     config = json.load(f)
 rang = config['rang']
 name = config['embedname']
-channel_id = 1315351763871596606 
+channel_id = 1318453817963974713 
 class events(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

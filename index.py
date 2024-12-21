@@ -1,4 +1,3 @@
-from keep_alive import keep_alive
 import nextcord, requests, time#, chat-exporter#, jishaku
 from nextcord.ext import commands
 from nextcord import Interaction, ui
@@ -53,7 +52,7 @@ def save_walletdb(data):
     with open('database\wallet.json', 'w') as file:
         json.dump(data, file, indent=4)
 
-VOUCHES_FILE = "database/vouches.json"
+VOUCHES_FILE = "database\vouches.json"
 
 if not os.path.exists(VOUCHES_FILE):
     with open(VOUCHES_FILE, 'w') as f:
@@ -133,7 +132,7 @@ def load_config():
             }
         }
 
-role_map_file = "database/rolemap.json"
+role_map_file = "database\rolemap.json"
 def rolemap():
     if os.path.exists(role_map_file):
         try:
@@ -261,13 +260,13 @@ async def on_ready():
     else:
         print("ExchangeBot Cog not found!")
 
-@bot.command(pass_context=True)
+'''@bot.command(pass_context=True)
 async def ping(ctx):
     before = time.monotonic()
     message = await ctx.send("Pong!")
     ping = (time.monotonic() - before) * 1000
     await message.edit(content=f"Pong!  `{int(ping)}ms`")
-    #print(f'Ping {int(ping)}ms')
+    #print(f'Ping {int(ping)}ms')'''
 
 '''@bot.command()
 async def d(ctx):
@@ -406,8 +405,8 @@ async def setup(interaction: nextcord.Interaction, channel: nextcord.TextChannel
 @bot.slash_command(description="unsetups exchange panel")
 async def unsetup(interaction: nextcord.Interaction):
     if any(role.id == admin for role in interaction.user.roles):
-        if os.path.exists('database/state.json'):
-            with open('database/state.json', 'r') as file:
+        if os.path.exists('database\state.json'):
+            with open('database\state.json', 'r') as file:
                 state = json.load(file)
             state.pop('setup_channel_id', None)
             state.pop('setup_message_id', None)
@@ -602,7 +601,6 @@ async def help(ctx, helpcategory="none"):
     await ctx.send(embed=embed)
 
 async def main():
-  keep_alive()
+  #await load()
   await bot.start(tkn)
-
 asyncio.run(main())

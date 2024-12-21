@@ -31,10 +31,10 @@ CLIENT_ROLE_ID = config['client_role_id']
 name = config['embedname']
 trans_logs = Webhook(f"{tr_log}")
 nocolor=0x2B2D31
-tick="<:GreenCheck:1317254690676936816>"
-cross="<:Cross:1317254692706979861>"
+tick="<:check:1305951941423009803>"
+cross="<a:CrossXCross:1320006279376404550>"
 #######################################################3
-VOUCHES_FILE = "database/vouches.json"
+VOUCHES_FILE = "database\vouches.json"
 
 if not os.path.exists(VOUCHES_FILE):
     with open(VOUCHES_FILE, 'w') as f:
@@ -114,7 +114,7 @@ def load_config():
             }
         }
 
-role_map_file = "database/rolemap.json"
+role_map_file = "database\rolemap.json"
 def rolemap():
     if os.path.exists(role_map_file):
         try:
@@ -190,7 +190,7 @@ class ClaimButton(nextcord.ui.View):
         self.last_change_amount_pressed = None
         self.claimer_name = None
 
-    @nextcord.ui.button(label="Claim", emoji="<:claim:1316148029941747805>", style=nextcord.ButtonStyle.grey)
+    @nextcord.ui.button(label="Claim", emoji="<:thunder2:1305942208632983573>", style=nextcord.ButtonStyle.grey)
     async def claim_ticket(self, button: nextcord.ui.Button, interaction: nextcord.Interaction):
         self.claimer_name = interaction.user.name
         current_time = asyncio.get_event_loop().time()
@@ -219,7 +219,7 @@ class ClaimButton(nextcord.ui.View):
         channel_id = str(interaction.channel.id)
         claimer_id = interaction.user.id
         try:
-            with open("database/exchangedeals.json", "r") as file:
+            with open("database\exchangedeals.json", "r") as file:
                 exchange_data = json.load(file)
             
             if channel_id in exchange_data:
@@ -233,7 +233,7 @@ class ClaimButton(nextcord.ui.View):
             else:
                 await interaction.response.send_message("No data found for this channel in exchangedeals.json.", ephemeral=True)
                 return
-            with open("database/exchangedeals.json", "w") as file:
+            with open("database\exchangedeals.json", "w") as file:
                 json.dump(exchange_data, file, indent=4)
 
         except FileNotFoundError:
@@ -243,7 +243,7 @@ class ClaimButton(nextcord.ui.View):
         except Exception as e:
             await interaction.response.send_message(f"An unexpected error occurred: {str(e)}", ephemeral=True)
 
-    @nextcord.ui.button(label="Close", emoji="<:lock:1316145457893867621>", style=nextcord.ButtonStyle.grey)
+    @nextcord.ui.button(label="Close", emoji="🔒", style=nextcord.ButtonStyle.grey)
     async def close_ticket(self, button: nextcord.ui.Button, interaction: nextcord.Interaction):
         current_time = asyncio.get_event_loop().time()
         if self.last_close_pressed is not None and (current_time - self.last_close_pressed) < 30:
@@ -265,7 +265,7 @@ class ClaimButton(nextcord.ui.View):
         else:
             await interaction.response.send_message("Only Ticket Owner Can Close this Ticket", ephemeral=True)        
 
-    @nextcord.ui.button(label="REQ MM", emoji="<:Middleman:1316026715591540849>", style=nextcord.ButtonStyle.gray, custom_id="button_click")
+    @nextcord.ui.button(label="REQ MM", emoji="<:mm2:1320006751482806352>", style=nextcord.ButtonStyle.gray, custom_id="button_click")
     async def req_mm(self, button: nextcord.ui.Button, interaction: nextcord.Interaction):
         channel = interaction.channel
         role_id = 1315673156714762300

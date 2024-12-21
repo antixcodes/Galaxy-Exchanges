@@ -6,4 +6,3 @@ dhooks
 chat-exporter
 qrcode
 aiofiles
-Flask

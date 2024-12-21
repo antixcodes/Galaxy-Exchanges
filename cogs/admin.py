@@ -7,7 +7,7 @@ with open('config.json', 'r') as f:
 rang = config['rang']
 name = config['embedname']
 
-role_map_file = "database/rolemap.json"
+role_map_file = "database\rolemap.json"
 def rolemap():
     if os.path.exists(role_map_file):
         try:

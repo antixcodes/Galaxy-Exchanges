@@ -62,24 +62,38 @@ def save_state(state):
         json.dump(state, file)
 
 def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, file_name="database/exchangedeals.json"):
+    # Ensure file path uses OS-independent separators
+    file_name = os.path.join(*file_name.split('/')) if '/' in file_name else os.path.join(*file_name.split('\\'))
+
     new_data = {
         ticket_channel_id: [
-            {   "name": nom,
+            {
+                "name": nom,
                 "sendingcurrency": sendingcurrency,
-                "receivingcurrency": receivingcurrency
+                "receivingcurrency": receivingcurrency,
             }
         ]
     }
 
     try:
-        with open(file_name, "r") as file:
-            data = json.load(file)
-    except FileNotFoundError:
+        # Try reading existing data
+        if os.path.exists(file_name) and os.path.getsize(file_name) > 0:
+            with open(file_name, "r") as file:
+                data = json.load(file)
+        else:
+            data = {}
+    except json.JSONDecodeError:
+        print(f"Error: File {file_name} contains invalid JSON. Resetting data.")
         data = {}
+
+    # Update data with the new entry
     if ticket_channel_id in data:
         data[ticket_channel_id].extend(new_data[ticket_channel_id])
     else:
         data.update(new_data)
+
+    # Write updated data back to the file
+    os.makedirs(os.path.dirname(file_name), exist_ok=True)  # Ensure the directory exists
     with open(file_name, "w") as file:
         json.dump(data, file, indent=4)
     print(f"Data saved to {file_name}")

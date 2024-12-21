@@ -7,7 +7,7 @@ with open('config.json', 'r') as f:
 rang = config['rang']
 name = config['embedname']
 
-role_map_file = "database\rolemap.json"
+role_map_file = "database/rolemap.json"
 def rolemap():
     if os.path.exists(role_map_file):
         try:
@@ -42,13 +42,13 @@ def generate_key():
 
 def load_staff_data():
     try:
-        with open("database\staff.json", "r") as file:
+        with open("database/staff.json", "r") as file:
             return json.load(file)
     except FileNotFoundError:
         return {}
 
 def save_staff_data(data):
-    with open("database\staff.json", "w") as file:
+    with open("database/staff.json", "w") as file:
         json.dump(data, file, indent=4)
 
 role_mapping = exchconfig.get("role_map", {})

@@ -34,7 +34,7 @@ nocolor=0x2B2D31
 tick="<:check:1305951941423009803>"
 cross="<a:CrossXCross:1320006279376404550>"
 #######################################################3
-VOUCHES_FILE = "database\vouches.json"
+VOUCHES_FILE = "database/vouches.json"
 
 if not os.path.exists(VOUCHES_FILE):
     with open(VOUCHES_FILE, 'w') as f:
@@ -42,26 +42,26 @@ if not os.path.exists(VOUCHES_FILE):
 
 def load_walletdb():
     try:
-        with open('database\wallet.json', 'r') as file:
+        with open('database/wallet.json', 'r') as file:
             return json.load(file)
     except FileNotFoundError:
         return {}  
     
 def save_walletdb(data):
-    with open('database\wallet.json', 'w') as file:
+    with open('database/wallet.json', 'w') as file:
         json.dump(data, file, indent=4)
 
 def load_state():
-    if os.path.exists('database\state.json'):
-        with open('database\state.json', 'r') as file:
+    if os.path.exists('database/state.json'):
+        with open('database/state.json', 'r') as file:
             return json.load(file)
     return {}
 
 def save_state(state):
-    with open('database\state.json', 'w') as file:
+    with open('database/state.json', 'w') as file:
         json.dump(state, file)
 
-def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, file_name="database\exchangedeals.json"):
+def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, file_name="database/exchangedeals.json"):
     new_data = {
         ticket_channel_id: [
             {   "name": nom,
@@ -84,7 +84,7 @@ def exchangedeal(ticket_channel_id, nom, sendingcurrency, receivingcurrency, fil
         json.dump(data, file, indent=4)
     print(f"Data saved to {file_name}")
 
-CONFIG_FILE_PATH = "database\categorydb.json"
+CONFIG_FILE_PATH = "database/categorydb.json"
 def load_config():
     if os.path.exists(CONFIG_FILE_PATH):
         with open(CONFIG_FILE_PATH, "r") as file:
@@ -114,7 +114,7 @@ def load_config():
             }
         }
 
-role_map_file = "database\rolemap.json"
+role_map_file = "database/rolemap.json"
 def rolemap():
     if os.path.exists(role_map_file):
         try:
@@ -147,7 +147,7 @@ def rolemapsave(config):
         json.dump(config, file, indent=4)
 
 exchconfig = rolemap()  
-def fukc(file_name="database\exchangedeals.json"):
+def fukc(file_name="database/exchangedeals.json"):
     try:
         with open(file_name, "r") as file:
             data = json.load(file)
@@ -164,13 +164,13 @@ if not os.path.exists('tickets'):
     os.makedirs('tickets')
 
 def load_state():
-    if os.path.exists('database\state.json'):
-        with open('database\state.json', 'r') as file:
+    if os.path.exists('database/state.json'):
+        with open('database/state.json', 'r') as file:
             return json.load(file)
     return {}
 
 def save_state(state):
-    with open('database\state.json', 'w') as file:
+    with open('database/state.json', 'w') as file:
         json.dump(state, file)
 
 state = load_state()
@@ -219,7 +219,7 @@ class ClaimButton(nextcord.ui.View):
         channel_id = str(interaction.channel.id)
         claimer_id = interaction.user.id
         try:
-            with open("database\exchangedeals.json", "r") as file:
+            with open("database/exchangedeals.json", "r") as file:
                 exchange_data = json.load(file)
             
             if channel_id in exchange_data:
@@ -233,7 +233,7 @@ class ClaimButton(nextcord.ui.View):
             else:
                 await interaction.response.send_message("No data found for this channel in exchangedeals.json.", ephemeral=True)
                 return
-            with open("database\exchangedeals.json", "w") as file:
+            with open("database/exchangedeals.json", "w") as file:
                 json.dump(exchange_data, file, indent=4)
 
         except FileNotFoundError:

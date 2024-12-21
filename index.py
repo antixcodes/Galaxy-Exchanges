@@ -43,15 +43,24 @@ tick="<:GreenCheck:1317254690676936816>"
 #######################################################3
 
 def load_walletdb():
+    file_path = 'database/wallet.json'
+    if not os.path.exists(file_path):
+        return {}
     try:
-        with open('database/wallet.json', 'r') as file:
+        with open(file_path, 'r') as file:
             return json.load(file)
-    except FileNotFoundError:
-        return {}  
-    
+    except json.JSONDecodeError:
+        print(f"Warning: {file_path} contains invalid JSON. Returning an empty dictionary.")
+        return {}
+
 def save_walletdb(data):
-    with open('database/wallet.json', 'w') as file:
-        json.dump(data, file, indent=4)
+    file_path = 'database/wallet.json'
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    try:
+        with open(file_path, 'w') as file:
+            json.dump(data, file, indent=4)
+    except Exception as e:
+        print(f"Error saving wallet database: {e}")
 
 VOUCHES_FILE = "database/vouches.json"
 

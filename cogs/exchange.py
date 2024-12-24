@@ -564,26 +564,29 @@ class MainCog(commands.Cog):
                 embed = nextcord.Embed(title=f"{name} Service", color=rang)
                 embed.add_field(name="<:exchange2:1314633645692026891> Exchanges <:exchange2:1314633645692026891>", value="""
 <:INR:1308674301406482463> Crypto to INR 
-<:b_:1315699244182540373> BELOW 50$ 87/$
-<:b_:1315699244182540373> ABOVE 50$ 87.5/$
+<:b_:1315699244182540373> Below 10$ > 87.5/$
+<:b_:1315699244182540373> Below 50$ > 88/$
+<:b_:1315699244182540373> Below 90$ > 88.5/$
+<:b_:1315699244182540373> Above 90$ > 89/$
 
 <:INR:1308674301406482463> INR To Crypto 
-<:b_:1315699244182540373> 91/$ | ANY AMOUNT
+<:b_:1315699244182540373> Below 90$ > 90/$
+<:b_:1315699244182540373> Above 90$ > 89/$
 
 <:Cryptotocrypto_official:1305994531585392692> Crypto to Crypto
-<:b_:1315699244182540373> 3% | ANY AMOUNT
+<:b_:1315699244182540373> 1.5% | ANY AMOUNT
 
 <:PAYPAL:1308674173333409895> PAYPAL TO CRYPTO
-<:b_:1315699244182540373> 10% | ANY AMOUNT
+<:b_:1315699244182540373> 9% | ANY AMOUNT
 
 <:PAYPAL:1308674173333409895> CRYPTO TO PAYPAL
-<:b_:1315699244182540373> 1% | ANY AMOUNT""")
+<:b_:1315699244182540373> 2% | ANY AMOUNT""")
                 embed.add_field(name="<:exchange2:1314633645692026891> Rate of Foreign Currency:", value="""
 <:pkr:1315703040875167744>  Pkr to Crypto
-<:b_:1315699244182540373> 293/$ | ANY AMOUNT
+<:b_:1315699244182540373> 300/$ | ANY AMOUNT
 
 <:pkr:1315703040875167744>  Crypto to Pkr
-<:b_:1315699244182540373> 278/$ | ANY AMOUNT
+<:b_:1315699244182540373> 270/$ | ANY AMOUNT
 
 🇮🇩  Crypto to IDR
 <:b_:1315699244182540373> 15100/$
@@ -592,10 +595,12 @@ class MainCog(commands.Cog):
 <:b_:1315699244182540373>16000/$
 
 <:BDTTT:1315702666504048754> Crypto to BDT
-<:b_:1315699244182540373>124/$
+<:b_:1315699244182540373> Below 50$ > 133/$
+<:b_:1315699244182540373> Above 50$ > 132/$
 
 <:BDTTT:1315702666504048754> BDT to Crypto
-<:b_:1315699244182540373>129/$
+<:b_:1315699244182540373> Below 50$ > 128/$
+<:b_:1315699244182540373> Above 50$ > 128.5/$
             """, inline=False)
                 guild = channel.guild
                 embed.set_thumbnail(url=guild.icon.url)

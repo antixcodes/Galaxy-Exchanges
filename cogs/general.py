@@ -31,10 +31,11 @@ class general(commands.Cog):
 
     @commands.command()
     async def staffreq(self, ctx):
+            await ctx.delete()
             embed = nextcord.Embed(title="Galaxy Exchange Staff Req", color=rang)
-            embed.add_field(name="<a:alert:1316152948560101509> Req:", value=f"<:aa:1308317082030575627> 30+ vouches = 2$ Exchange/mm limit\n<:b_:1308317606196936735> 50+ vouches = 4$ Exchange/mm limit\n**Must have to add our vanity in your status/about**", inline=False)
+            embed.add_field(name="<:alert:1321168458016358448> Req:", value=f"<:b_:1308317606196936735> 30+ vouches = 2$ Exchange/mm limit\n<:b_:1308317606196936735> 50+ vouches = 4$ Exchange/mm limit\n**TOS: Must have to add our vanity in your status/about**", inline=False)
             embed.add_field(name="Want more exchange/mm limit", value=f"> Deposite Security Amount Above your Limit\n> Eg: Your limit is 2$ and you want limit of 4$ then deposit 2$ as security", inline=False)
-            embed.set_footer(text=f"Requested by {ctx.author.name}", icon_url=f"{ctx.author.avatar.url}")
+            embed.set_footer(text=f"Galaxy Exchanges | MM | Exchanges")
             embed.set_thumbnail(url=ctx.guild.icon.url)
             await ctx.send(embed=embed)
 

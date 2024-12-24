@@ -1,4 +1,4 @@
-import nextcord, string
+import nextcord, string, asyncio
 from nextcord.ext import commands
 import random, json, os
 
@@ -134,7 +134,10 @@ class admin(commands.Cog):
     @commands.command()
     async def delete(self, ctx):
         channel=ctx.channel
+        await ctx.message.delete()
         if any(role.id == adminrole for role in ctx.author.roles):
+            await ctx.send("This Ticket will be deleted in 10 sec")
+            await asyncio.sleep(10)
             await channel.delete()
         else:
             print("idk")
